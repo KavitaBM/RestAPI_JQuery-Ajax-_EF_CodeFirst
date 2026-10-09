@@ -1,0 +1,6 @@
+@using RestAPI_JQuery_Ajax__EF_CodeFirst.Areas.HelpPage.ModelDescriptions
+@model CollectionModelDescription
+@if (Model.ElementDescription is ComplexTypeModelDescription)
+{
+    @Html.DisplayFor(m => m.ElementDescription)
+}

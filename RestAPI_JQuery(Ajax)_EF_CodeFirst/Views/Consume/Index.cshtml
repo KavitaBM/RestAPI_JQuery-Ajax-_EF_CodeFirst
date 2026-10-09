@@ -1,0 +1,30 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+
+<body>
+    <h1>Web API Get</h1>
+    <form>
+        <input type="button" id="btn" value="Get Record(s)"/>
+        <table id="tbl" border="1"></table>
+    </form>
+    <script src="~/Scripts/jquery-3.7.0.js"></script>
+    <script>
+        $("#btn").click(fun1);
+        function fun1() {
+            $.ajax({ url: "/api/Customer", type: "Get", success: fun2, error: fun3 });
+        }
+        function fun2(rsp) {
+            $("#tbl").html("<tr><th>Customer ID</th><th>Customer Name</th><th>Customer Email</th><th>Customer Phone</th></tr>");
+            for (var i = 0; i < rsp.length; i++) {
+                $("#tbl").append("<tr><td>" + rsp[i].CustId + "</td><td>" + rsp[i].Name + "</td><td>" + rsp[i].Email + "</td><td>" + rsp[i].Phone + "</td></tr>");
+            }
+        }
+        function fun3(ex) {
+            alert(ex.responseText);
+        }
+    </script>
+
+</body>
+</html>
